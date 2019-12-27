@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN apk add sane sane-utils imagemagick nodejs npm
+RUN apk add --update sane sane-utils imagemagick nodejs npm
 
 RUN echo 'localhost' > /etc/sane.d/net.conf
 
