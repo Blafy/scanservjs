@@ -1,15 +1,17 @@
-FROM alpine:3
+FROM debian:buster-slim
 
 WORKDIR /app
 
-COPY . .
-
-RUN apk add --update sane sane-utils imagemagick nodejs npm
+RUN apt-get update && apt-get install -y --no-install-recommends sane sane-utils imagemagick nodejs npm
 
 RUN echo 'localhost' > /etc/sane.d/net.conf
+
+RUN npm install npm@latest -g
+
+COPY . .
 
 RUN npm install
 
 RUN node_modules/gulp/bin/gulp.js
 
-ENTRYPOINT ["server.js"]
+ENTRYPOINT ["node", "server.js"]
