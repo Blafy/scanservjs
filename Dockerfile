@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM debian:buster-slim  #on a raspi, use : balenalib/raspberry-pi-debian:buster
 
 WORKDIR /app
 
